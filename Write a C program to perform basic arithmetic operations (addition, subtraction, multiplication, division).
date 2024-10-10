@@ -1,0 +1,13 @@
+4.
+
+// arithmetic operations (addition, subtraction, multiplication, division).
+#include <stdio.h>
+int main()
+{
+int a=5, b=5, c=20 ,d=10, e=5, f=5 ,g=10,h=10;
+printf("the addition is %d\n", a+b);
+printf("the subtraction is %d\n", c-d);
+printf("the multiplication is %d\n", e*f);
+printf("the division is %d\n", g/h);
+return 0;
+}
