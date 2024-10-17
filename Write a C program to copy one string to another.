@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    char source[100], destination[100];
+
+    // Input the source string
+    printf("Enter the source string: ");
+    fgets(source, sizeof(source), stdin);
+
+    // Copying the string
+    int i;
+    for(i = 0; (destination[i] = source[i]) != '\0'; i++);
+
+    // Output the copied string
+    printf("Copied string: %s\n", destination);
+    
+    return 0;
+}
