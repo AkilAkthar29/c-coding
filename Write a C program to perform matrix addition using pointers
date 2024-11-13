@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void matrixAddition(int *A, int *B, int *C, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            *(C + i * cols + j) = *(A + i * cols + j) + *(B + i * cols + j);
+        }
+    }
+}
+
+int main() {
+    int rows, cols;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    int A[rows][cols], B[rows][cols], C[rows][cols];
+
+    printf("Enter elements of matrix A:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    printf("Enter elements of matrix B:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    matrixAddition((int *)A, (int *)B, (int *)C, rows, cols);
+
+    printf("Resultant matrix after addition:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
