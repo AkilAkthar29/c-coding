@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+    char ch;
+    int lineCount = 0;
+
+    // Open the file in read mode
+    file = fopen("sample.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return 1; // Return error if the file cannot be opened
+    }
+
+    // Read the file character by character
+    while ((ch = fgetc(file)) != EOF) {
+        if (ch == '\n') {
+            lineCount++;  // Increment the line count on encountering newline
+        }
+    }
+
+    // If the file is not empty and doesn't end with a newline, increment lineCount for the last line
+    if (lineCount == 0 && ch == EOF && ftell(file) > 0) {
+        lineCount = 1;  // For a file that does not end with a newline, it's still considered one line
+    }
+
+    // Close the file
+    fclose(file);
+
+    // Display the number of lines
+    printf("Number of lines in the file: %d\n", lineCount);
+
+    return 0;
+}
