@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;  // Declare a pointer to a FILE
+    char content[] = "This is a test file.\nC programming is fun!\nLearning C is awesome.";
+
+    // Open the file in write mode ("w")
+    file = fopen("output.txt", "w");
+
+    // Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return 1;  // Return an error code
+    }
+
+    // Write content to the file
+    fprintf(file, "%s", content);
+
+    // Alternatively, you can use fputs() to write a string:
+    // fputs(content, file);
+
+    // Close the file
+    fclose(file);
+
+    printf("Content written to output.txt successfully.\n");
+
+    return 0;
+}
