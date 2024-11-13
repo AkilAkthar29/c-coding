@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_WORD_LEN 100
+
+// Function to convert a string to lowercase
+void toLowerCase(char str[]) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
+// Function to find the frequency of a word in the file
+int findWordFrequency(FILE *file, const char *word) {
+    char fileWord[MAX_WORD_LEN];
+    int wordCount = 0;
+
+    // Read words from the file
+    while (fscanf(file, "%s", fileWord) == 1) {
+        toLowerCase(fileWord);  // Convert word to lowercase for case-insensitive comparison
+        if (strcmp(fileWord, word) == 0) {
+            wordCount++;  // Increment count if the word matches
+        }
+    }
+
+    return wordCount;
+}
+
+int main() {
+    FILE *file;
+    char word[MAX_WORD_LEN];
+    int frequency;
+
+    // Open the file in read mode
+    file = fopen("sample.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return 1;
+    }
+
+    // Get the word whose frequency you want to find
+    printf("Enter the word to find i
