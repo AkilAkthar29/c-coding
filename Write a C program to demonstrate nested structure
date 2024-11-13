@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+// Define a structure to represent a Date
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+// Define a structure to represent a Student, with a nested Date structure
+struct Student {
+    char name[50];
+    int rollNumber;
+    struct Date dob; // Nested structure: Date within Student
+};
+
+int main() {
+    // Declare and initialize a student
+    struct Student student1 = {
+        "John Doe",
+        101,
+        {25, 12, 2000}  // Initialize the nested Date structure (DOB)
+    };
+
+    // Display student information
+    printf("Student Information:\n");
+    printf("Name: %s\n", student1.name);
+    printf("Roll Number: %d\n", student1.rollNumber);
+    printf("Date of Birth: %02d/%02d/%04d\n", student1.dob.day, student1.dob.month, student1.dob.year);
+
+    return 0;
+}
