@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+    char ch;
+    int count = 0;
+
+    // Open the file in read mode
+    file = fopen("sample.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return 1; // Return error if the file cannot be opened
+    }
+
+    // Read the file character by character
+    while ((ch = fgetc(file)) != EOF) {
+        count++;  // Increment the count for each character read
+    }
+
+    // Close the file
+    fclose(file);
+
+    // Display the number of characters
+    printf("Number of characters in the file: %d\n", count);
+
+    return 0;
+}
