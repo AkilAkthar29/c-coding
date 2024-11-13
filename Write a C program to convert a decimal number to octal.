@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+#define MAX_BITS 32  // Maximum number of bits for the octal representation
+
+// Function to convert decimal to octal
+void decimalToOctal(int n) {
+    int octal[MAX_BITS];  // Array to store octal digits
+    int index = 0;        // To keep track of the array index
+
+    // Handle the case when n is zero
+    if (n == 0) {
+        printf("0");
+        return;
+    }
+
+    // Repeatedly divide the number by 8 and store the remainder
+    while (n > 0) {
+        octal[index] = n % 8;
+        n = n / 8;
+        index++;
+    }
+
+    // Print the octal representation in reverse order (since we stored remainders)
+    for (int i = index - 1; i >= 0; i--) {
+        printf("%d", octal[i]);
+    }
+}
+
+int main() {
+    int decimal;
+
+    // Input a decimal number
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+
+    // Output the octal representation
+    printf("Octal equivalent: ");
+    decimalToOctal(decimal);
+
+    printf("\n");
+    return 0;
+}
