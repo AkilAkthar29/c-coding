@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+#define MAX 10  // Maximum size for the matrix
+
+// Function to get the cofactor of a matrix
+void getCofactor(int mat[MAX][MAX], int temp[MAX][MAX], int p, int q, int size) {
+    int i = 0, j = 0;
+    
+    // Loop through the elements of the matrix
+    for (int row = 0; row < size; row++) {
+        for (int col = 0; col < size; col++) {
+            // Skip the current row and column (p and q)
+            if (row != p && col != q) {
+                temp[i][j++] = mat[row][col];
+                if (j == size - 1) {
+                    j = 0;
+                    i++;
+                }
+            }
+        }
+    }
+}
+
+// Function to calculate the determinant of a matrix
+int determinant(int mat[MAX][MAX], int size) {
+    int D = 0; // To store the determinant
+    if (size == 1) {
+        return mat[0][0];
+    }
+    
+    int temp[MAX][MAX]; // To store cofactors
+    int sign = 1; // Sign multiplier for cofactor
+
+    // Loop to expand the matrix along the first row
+    for (int f = 0; f < size; f++) {
+        // Get the cofactor matrix for the current element
+        getCofactor(mat, temp, 0, f, size);
+        
+        // Recursively calculate the determinant for the cofactor matrix
+        D += sign * mat[0][f] * determinant(temp, size - 1);
+
+        // Alternate the sign for the next cofactor expansion
+        sign = -sign;
+    }
+    
+    return D;
+}
+
+// Function to input a matrix
+void inputMatrix(int mat[MAX][MAX], int size) {
+    printf("Enter the elements of the matrix:\n");
+    for (int 
