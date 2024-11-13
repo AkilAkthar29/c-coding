@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
+
+    printf("Array elements using pointer arithmetic:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i + 1, *(ptr + i));
+    }
+
+    printf("\nPointer arithmetic in action:\n");
+    printf("Pointer increment: %d\n", *ptr);
+    ptr++;
+    printf("After increment, pointer points to: %d\n", *ptr);
+
+    ptr--;
+    printf("After decrement, pointer points back to: %d\n", *ptr);
+
+    int *ptr_end = arr + 4;
+    int diff = ptr_end - ptr;
+    printf("Difference between ptr_end and ptr (in terms of elements): %d\n", diff);
+
+    printf("Using pointer with array index: %d\n", *(arr + 2));
+
+    return 0;
+}
