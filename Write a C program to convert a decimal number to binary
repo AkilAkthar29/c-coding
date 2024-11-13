@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+#define MAX_BITS 32  // Maximum number of bits for the binary representation
+
+// Function to convert decimal to binary
+void decimalToBinary(int n) {
+    int binary[MAX_BITS];  // Array to store binary digits
+    int index = 0;         // To keep track of the array index
+
+    // Handle the case when n is zero
+    if (n == 0) {
+        printf("0");
+        return;
+    }
+
+    // Repeatedly divide the number by 2 and store the remainder
+    while (n > 0) {
+        binary[index] = n % 2;
+        n = n / 2;
+        index++;
+    }
+
+    // Print the binary representation in reverse order (since we stored remainders)
+    for (int i = index - 1; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
+}
+
+int main() {
+    int decimal;
+
+    // Input a decimal number
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+
+    // Output the binary representation
+    printf("Binary equivalent: ");
+    decimalToBinary(decimal);
+
+    printf("\n");
+    return 0;
+}
